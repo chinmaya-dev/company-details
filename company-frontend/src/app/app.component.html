@@ -52,7 +52,7 @@
         </thead>
         <tbody>
           
-          <tr *ngFor="let company of companies;let index = index;">
+          <tr *ngFor="let company of ICompanyDetails;let index = index;">
             <th scope="row">{{index+1}}</th>
             <td><input type="text" class="form-control" name="companyid-{{index}}" id="companyid-{{index}}" [(ngModel)] ="company.name"   aria-describedby="emailHelp"></td>
             <td><input type="text" class="form-control" name="address-{{index}}" id="address-{{index}}" [(ngModel)] ="company.address"   aria-describedby="emailHelp"></td>

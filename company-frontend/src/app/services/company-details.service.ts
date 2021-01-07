@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import{ GlobalConstants } from '../common/global-constants';
 import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { ICompanyDetails } from '../models/company.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class CompanyDetailsService {
   }
 
   public sendGetRequest(){
-    return this.httpClient.get(this.REST_API_GET).pipe(retry(3),catchError(this.handleError));;
+    return this.httpClient.get<ICompanyDetails[]>(this.REST_API_GET).pipe(retry(3),catchError(this.handleError));;
   }
   public postRequest(companyDetails){
     const headers = { 'content-type': 'application/json'}  

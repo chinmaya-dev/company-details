@@ -1,6 +1,7 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { CompanyDetailsService } from './services/company-details.service';
 import { FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
+import { ICompanyDetails } from './models/company.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  companies = [];
+  title = "company-frontend";
+  ICompanyDetails = [];
   form: FormGroup;
   Companyname: string;
   Companyaddress: string;
@@ -21,15 +23,15 @@ export class AppComponent implements OnInit {
 
   getAllCompanyDetails(){
     this.dataService.sendGetRequest().subscribe((data: any[])=>{
-      
-      this.companies = data;
+      // console.log(data);
+      this.ICompanyDetails = data;
     }) 
   }
 
   editCompany(editdata){
    
     this.dataService.putRequest(editdata).subscribe((data: any[])=>{
-      console.log(data);
+      // console.log(data);
       this.getAllCompanyDetails();
       
     }) 
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit {
   postCompanyDetails() {
     let companyDetails = {name: this.Companyname,address: this.Companyaddress, phone: this.Companyphone, foundationyear: this.Companyear,GSTNo: this.Companygst};
     this.dataService.postRequest(companyDetails).subscribe((data: any[])=>{
-      console.log(data);
+      // console.log(data);
       this.isFormShow = false;
       this.getAllCompanyDetails();
       
