@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyDetailsService } from './services/company-details.service';
-import { AddCompanyComponent } from './add-company/add-company.component';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddCompanyComponent
+    AppComponent
   ],
   imports: [
     FormsModule,

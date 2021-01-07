@@ -75,6 +75,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <div *ngIf="isFormShow; else showSuccessMessage" >
         <form (ngSubmit)="postCompanyDetails()">
           <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
@@ -102,12 +103,19 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-    
+      <ng-template #showSuccessMessage>
+        <div style="text-align: center;">
+        <img src="https://i.ibb.co/4P4JMZY/update-success.gif" alt="update-success" border="0"
+        style="max-height:90px;max-width:90px;">
+        <h4>Successfully Saved Company Details</h4>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
     </div>
   </div>
+</div>
 </div>
 </section>
 <!-- Toolbar -->

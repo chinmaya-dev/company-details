@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   Companyphone: string;
   Companyear: string;
   Companygst: string;
+  isFormShow:boolean=true;
   public companyDetails;
   constructor(private dataService: CompanyDetailsService) { }
 
@@ -26,11 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   editCompany(editdata){
-    // console.log(editdata)
+   
     this.dataService.putRequest(editdata).subscribe((data: any[])=>{
       console.log(data);
       this.getAllCompanyDetails();
-      // this.companies = data;
+      
     }) 
     
   }
@@ -39,8 +40,9 @@ export class AppComponent implements OnInit {
     let companyDetails = {name: this.Companyname,address: this.Companyaddress, phone: this.Companyphone, foundationyear: this.Companyear,GSTNo: this.Companygst};
     this.dataService.postRequest(companyDetails).subscribe((data: any[])=>{
       console.log(data);
+      this.isFormShow = false;
       this.getAllCompanyDetails();
-      // this.companies = data;
+      
     }) 
     
   }
